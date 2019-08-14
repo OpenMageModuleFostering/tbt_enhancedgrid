@@ -1,13 +1,13 @@
 {
     "name": "OpenMageModuleFostering/TBT_Enhancedgrid",
     "type": "magento-module",
-    "license": "OSL-3.0",
+    "license": "",
     "homepage": "",
-    "description": "Fixes 404 issues and adds a Categories column option.",
+    "description": "Enhanced admin product grid with images, custom attributes and more.",
     "authors": [
     {
-        "name": "Jay",
-        "email": "najibkaake@gmail.com"
+        "name": "Jay El-Kaake",
+        "email": "jay@sweettoothhq.com"
     }
 ],
     "suggest": {
