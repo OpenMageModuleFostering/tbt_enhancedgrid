@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/TBT_Enhancedgrid",
+    "type": "magento-module",
+    "license": "OSL-3.0",
+    "homepage": "",
+    "description": "Enhances the product grid to add a bunch of convenient features.",
+    "authors": [
+    {
+        "name": "Jay",
+        "email": "najibkaake@gmail.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
