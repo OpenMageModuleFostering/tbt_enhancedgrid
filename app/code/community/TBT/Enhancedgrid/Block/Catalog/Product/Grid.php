@@ -78,6 +78,10 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
         return isset($this->columnSettings[$code]);
     }
     
+    protected function _isSpecialCol($col) {
+        return ($col == 'qty' || $col == 'websites' || $col=='id' || $col == 'categories');
+    }
+    
     protected function _prepareLayout()
     {
         $this->setChild('export_button',
@@ -148,8 +152,35 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
         // EG: Select all needed columns.
         //id,name,type,attribute_set,sku,price,qty,visibility,status,websites,image
         foreach($this->columnSettings as $col => $true) {
-            if($col == 'qty' || $col == 'websites' || $col=='id') continue;
+            if($this->_isSpecialCol($col)) continue;
             $collection->addAttributeToSelect($col);
+        }
+        
+        if($this->colIsVisible('categories')) {
+            $collection 
+                ->joinField('category_id',
+                    'catalog/category_product',
+                    'category_id',
+                    'product_id=entity_id',
+                    null,
+                    'left');
+            $category_name_attribute_id = Mage::getModel('eav/entity_attribute')->loadByCode('catalog_category', 'name')->getId();
+            
+            $collection 
+                ->joinField('categories',
+                    'catalog_category_entity_varchar',
+                    'GROUP_CONCAT(_table_categories.value)',
+                    'entity_id=category_id',
+                    "_table_categories.attribute_id={$category_name_attribute_id}",
+                    'left');
+            $collection 
+                ->joinField('category',
+                    'catalog_category_entity_varchar',
+                    'value',
+                    'entity_id=category_id',
+                    "_table_category.attribute_id={$category_name_attribute_id}",
+                    'left');
+            $collection->groupByAttribute('entity_id');
         }
         
         $this->setCollection($collection);
@@ -376,10 +407,26 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
             }
         }
 
+        if($this->colIsVisible('categories')) {
+            if (!Mage::app()->isSingleStoreMode()) {
+                $this->addColumn('categories',
+                    array(
+                        'header'=> Mage::helper('catalog')->__('Categories'),
+                        'width' => '100px',
+                        'sortable'  => true,
+                        'index'     => 'categories',
+                        'sort_index'     => 'category',
+                        'filter_index'     => 'category',
+                        'type'          => 'category',
+                ));
+            }
+        }
+
+
         // EG: Show all (other) needed columns.
         $ignoreCols = array('id'=>true, 'websites'=>true,'status'=>true,'visibility'=>true,'qty'=>true,
                 'price'=>true,'sku'=>true,'attribute_set_id'=>true, 'type_id'=>true,'name'=>true, 
-                'image'=>true, 'thumbnail' => true, 'small_image'=>true);
+                'image'=>true, 'thumbnail' => true, 'small_image'=>true, 'categories'=>true);
         $currency = $store->getBaseCurrency()->getCode();
         $truncate =  Mage::getStoreConfig('enhancedgrid/general/truncatelongtextafter');
         $defaults = array(
@@ -497,7 +544,7 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
         $imgHeight = Mage::getStoreConfig('enhancedgrid/images/height');
         $this->getMassactionBlock()->addItem('showImages', array(
             'label' => $this->__('Show Selected Images'),
-            'url'   => $this->getUrl('*/*/index', array('_current'=>true)),
+            'url'   => $this->getUrl('enhancedgrid/*/index', array('_current'=>true)),
             'callback' => 'showSelectedImages(productGrid_massactionJsObject, '
                 .'{checkedValues}, \'<img src=\\\'{imgurl}\\\' width='.$imgWidth
                 .' height='.$imgHeight.' border=0 />\')'
@@ -506,7 +553,7 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
         // Hide Images
         $this->getMassactionBlock()->addItem('hideImages', array(
             'label' => $this->__('Hide Selected Images'),
-            'url'   => $this->getUrl('*/*/index', array('_current'=>true)),
+            'url'   => $this->getUrl('enhancedgrid/*/index', array('_current'=>true)),
             'callback' => 'hideSelectedImages(productGrid_massactionJsObject, {checkedValues})'
             
         ));
@@ -519,7 +566,7 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
         // Refresh...
         $this->getMassactionBlock()->addItem('refreshProducts', array(
             'label' => $this->__('Refresh Products'),
-            'url'   => $this->getUrl('*/*/massRefreshProducts', array('_current'=>true))
+            'url'   => $this->getUrl('enhancedgrid/*/massRefreshProducts', array('_current'=>true))
         ));
         
        // $this->getMassactionBlock()->addItem('saveEditables', array(

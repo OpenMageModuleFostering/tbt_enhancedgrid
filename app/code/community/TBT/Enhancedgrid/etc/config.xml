@@ -3,7 +3,7 @@
 <config>
   <modules>
     <TBT_Enhancedgrid>
-      <version>1.0</version>
+      <version>1.2.1.1</version>
     </TBT_Enhancedgrid>
   </modules>
   
@@ -40,6 +40,7 @@
           <adminhtml>
             <rewrite>
               <widget_grid_column>TBT_Enhancedgrid_Block_Widget_Grid_Column</widget_grid_column>
+              <catalog_product>TBT_Enhancedgrid_Block_Catalog_Product</catalog_product>
             </rewrite>
           </adminhtml>
         </blocks>
@@ -50,6 +51,12 @@
                 <to>/enhancedgrid/catalog_product/${1}/</to>
             </tbt_enhancedgrid_catalog_product>
         </rewrite -->
+        <rewrite>
+            <tbt_enhancedgrid_catalog_product>
+                <from><![CDATA[#^/adminhtml/catalog_product/((massProd.*))/$#]]></from>
+                <to>/enhancedgrid/catalog_product/${1}/</to>
+            </tbt_enhancedgrid_catalog_product>
+        </rewrite>
     </global>
   
     <adminhtml>

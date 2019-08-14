@@ -3,7 +3,7 @@
     "type": "magento-module",
     "license": "OSL-3.0",
     "homepage": "",
-    "description": "Enhances the product grid to add a bunch of convenient features.",
+    "description": "Fixes 404 issues and adds a Categories column option.",
     "authors": [
     {
         "name": "Jay",

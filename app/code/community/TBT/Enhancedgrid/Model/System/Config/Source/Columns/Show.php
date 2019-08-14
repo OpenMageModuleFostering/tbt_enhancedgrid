@@ -39,6 +39,7 @@ class TBT_Enhancedgrid_Model_System_Config_Source_Columns_Show
         $cols[] = array('value' => 'attribute_set_id',   'label' => 'Attribute Set');
         $cols[] = array('value' => 'qty',   'label' => 'Quantity');
         $cols[] = array('value' => 'websites',   'label' => 'Websites');
+        $cols[] = array('value' => 'categories',   'label' => 'Categories');
         foreach($collection->getItems() as $col) {
             $cols[] = array('value' => $col->getAttributeCode(),   'label' => $col->getFrontendLabel());
         }
