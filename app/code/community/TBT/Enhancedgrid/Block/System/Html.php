@@ -1,18 +1,27 @@
 <?php
 /**
- * aheadWorks Co.
- *
+ * WDCA
+ *  
  * NOTICE OF LICENSE
  *
- * This source file is subject to the EULA
+ * This source file is subject to the Open Software License (OSL 3.0)
  * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
- * http://ecommerce.aheadworks.com/LICENSE-M1.txt
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
  *
- * @category   AW
- * @package    AW_All
- * @copyright  Copyright (c) 2003-2009 aheadWorks Co. (http://www.aheadworks.com)
- * @license    http://ecommerce.aheadworks.com/LICENSE-M1.txt
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category   WDCA
+ * @package    TBT_Enhancedgrid
+ * @copyright  Copyright (c) 2008-2010 WDCA (http://www.wdca.ca)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */ 
 
 
@@ -27,9 +36,9 @@ class TBT_Enhancedgrid_Block_System_Html
     {
 		
 		$html = "";
-        $html .= "<div style=\"border: medium dotted ; padding: 6px; font-weight: bold; margin-bottom: 12px; width: 430px;\">".
+        $html .= "<div style=\" margin-bottom: 12px; width: 430px;\">".
                  "This extension was provided by WDCA. <a href='http://wdca.ca/solutions_page_magento_ext.html' target='_blank'>Click here</a> for more from WDCA.</a><BR /> ".
-                 "Try our new <a href=\"http://www.GetSweetTooth.com\" target=\"_blank\">Sweet Tooth Points & Rewards</a> Magento Extension.</div>";
+                 "<BR />Try our new <a href=\"http://www.GetSweetTooth.com\" target=\"_blank\">Sweet Tooth Points & Rewards</a> Magento Extension.</div>";
         $html .= "";//$this->_getFooterHtml($element);
 
         return $html;

@@ -1,6 +1,6 @@
 <?php
 /**
- * Magento
+ * WDCA
  *
  * NOTICE OF LICENSE
  *
@@ -18,18 +18,18 @@
  * versions in the future. If you wish to customize Magento for your
  * needs please refer to http://www.magentocommerce.com for more information.
  *
- * @category   Mage
- * @package    Mage_Adminhtml
- * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @category   WDCA
+ * @package    TBT_Enhancedgrid
+ * @copyright  Copyright (c) 2008-2010 WDCA (http://www.wdca.ca)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
  * Adminhtml customer grid block
  *
- * @category   Mage
- * @package    Mage_Adminhtml
- * @author      Magento Core Team <core@magentocommerce.com>
+ * @category   WDCA
+ * @package    TBT_Enhancedgrid
+ * @author      WDCA <contact@wdca.ca>
  */
 class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
@@ -112,7 +112,7 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
     {
         $collection = $this->getCollection();
         if($queryString = $this->getQueryStr()) {
-            $collection = Mage::Helper('enhancedgrid')
+            $collection = Mage::helper('enhancedgrid')
                 ->getSearchCollection($queryString, $this->getRequest());
         }
         if(!$collection) {
@@ -134,7 +134,7 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
     
         if ($store->getId()) {
             //$collection->setStoreId($store->getId());
-            $collection->addStoreFilter($store);
+            $collection->addStoreFilter($store->getId());
             $collection->joinAttribute('custom_name', 'catalog_product/name', 'entity_id', null, 'inner', $store->getId());
             $collection->joinAttribute('status', 'catalog_product/status', 'entity_id', null, 'inner', $store->getId());
             $collection->joinAttribute('visibility', 'catalog_product/visibility', 'entity_id', null, 'inner', $store->getId());
@@ -174,7 +174,7 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
             if($attr->getFrontendInput() == 'select') {
                 $values = Mage::getResourceModel('eav/entity_attribute_option_collection')
                     ->setAttributeFilter($attr->getId())
-                    ->setStoreFilter($this->_getStore(), false)
+                    ->setStoreFilter($this->_getStore()->getId(), false)
                     ->load();
                 $options = array();
                 foreach($values as $value) {
@@ -264,7 +264,7 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
                 array(
                     'header'=> Mage::helper('catalog')->__('Name'),
                     'index' => 'name',
-                    'width' => '150px'
+//                    'width' => '150px'
             ));
         }
         if($this->colIsVisible('name')) {
@@ -543,7 +543,7 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
     
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('enhancedgrid/*/grid', array('_current'=>true));
     }
     
     

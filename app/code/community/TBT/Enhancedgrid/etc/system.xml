@@ -3,14 +3,13 @@
 
     <tabs>
         <tbtall translate="label" module="enhancedgrid">
-            <label>TBT Corp Extensions</label>
+            <label>WDCA Extensions</label>
             <sort_order>100</sort_order>
         </tbtall>
     </tabs>
    <sections>
         <enhancedgrid translate="label" module="enhancedgrid">
             <label>Enhanced Product Grid</label>
-            <comment>This extension was developed by Trade Business Technology Corp.  For customization </comment>
             <tab>tbtall</tab>
             <frontend_type>text</frontend_type>
             <sort_order>10</sort_order>
@@ -18,12 +17,12 @@
             <show_in_website>1</show_in_website>
             <show_in_store>0</show_in_store>
             <groups>
-                <columns translate="label">
-                    <label>General Options</label>
-                    <sort_order>200</sort_order>
+                <about translate="label">
+                    <label>About This Extension</label>
+                    <sort_order>100</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
-                    <fields>                  
+                    <fields>         
                         <notice translate="label">
                             <label>Extension Information Provided By WWW.WDCA.CA</label>
                             <frontend_type>text</frontend_type>
@@ -32,7 +31,15 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </notice>
+                        </notice>          
+                    </fields>
+                </about>
+                <columns translate="label">
+                    <label>Column Options</label>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <fields>                
                         <showcolumns translate="label">
                             <label>Show Columns</label>
                             <frontend_type>multiselect</frontend_type>
@@ -64,7 +71,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <fields>
-                        <showurl translate="label">
+                        <showurl translate="label comment">
                             <label>Show Image Url</label>
                             <comment>(When product image is hidden for that row)</comment>
                             <frontend_type>select</frontend_type>
@@ -73,7 +80,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                         </showurl>
-                        <showbydefault translate="label">
+                        <showbydefault translate="label comment">
                             <label>Show Image By Default</label>
                             <comment>If your grid has a large page size by default this could get slow.</comment>
                             <frontend_type>select</frontend_type>
@@ -82,14 +89,14 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                         </showbydefault>
-                        <width translate="label">
+                        <width translate="label comment">
                             <label>Image Width</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                         </width>
-                        <height translate="label">
+                        <height translate="label comment">
                             <label>Image Height</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>40</sort_order>
@@ -118,7 +125,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                         </page>
-                        <sort translate="label">
+                        <sort translate="label comment">
                             <label>Sort Column</label>
                             <comment>The selected column must be also selected above if it's not already there</comment>
                             <frontend_type>select</frontend_type>

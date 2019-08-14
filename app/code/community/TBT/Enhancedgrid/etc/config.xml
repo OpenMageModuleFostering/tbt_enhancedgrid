@@ -63,11 +63,11 @@
     	<menu>
 			<catalog module="enhancedgrid">
         		<children>
-					<enhancedgrid module="enhancedgrid">
-						<title>Manage Products (Enhanced)</title>
+					<products module="enhancedgrid" translate="title">
+						<title>Manage Products*</title>
 						<sort_order>0</sort_order>
 						<action>enhancedgrid/catalog_product</action>
-					</enhancedgrid>
+					</products>
 				</children>
 			</catalog>
 	   </menu>
@@ -77,10 +77,10 @@
         <enhancedgrid>
             <general>
                 <isenabled>1</isenabled>
-                <truncatelongtextafter>60</truncatelongtextafter>
             </general>
             <columns>
                 <showcolumns>id,name,type_id,attribute_set_id,sku,price,qty,visibility,status,websites,thumbnail</showcolumns>
+                <truncatelongtextafter>60</truncatelongtextafter>
             </columns>
             <images>
                 <showurl>0</showurl>
