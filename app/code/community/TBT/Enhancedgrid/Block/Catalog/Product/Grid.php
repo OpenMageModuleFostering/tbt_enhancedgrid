@@ -458,11 +458,14 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
         $this->getMassactionBlock()->addItem('imagesDivider', $this->getMADivider("Images"));
         
         // Show images...
+        $imgWidth = Mage::getStoreConfig('enhancedgrid/images/width') ;
+        $imgHeight = Mage::getStoreConfig('enhancedgrid/images/height');
         $this->getMassactionBlock()->addItem('showImages', array(
             'label' => $this->__('Show Selected Images'),
             'url'   => $this->getUrl('*/*/index', array('_current'=>true)),
             'callback' => 'showSelectedImages(productGrid_massactionJsObject, '
-                .'{checkedValues}, \'<img src=\\\'{imgurl}\\\' width=50 height=50 border=0 />\')'
+                .'{checkedValues}, \'<img src=\\\'{imgurl}\\\' width='.$imgWidth
+                .' height='.$imgHeight.' border=0 />\')'
             
         ));
         // Hide Images

@@ -50,9 +50,9 @@
     <adminhtml>
         <layout>
             <updates>
-                <TBT_Enhancedgrid>
+                <enhancedgrid>
                     <file>tbt_enhancedgrid.xml</file>
-                </TBT_Enhancedgrid>
+                </enhancedgrid>
             </updates>
         </layout>
     	<menu>

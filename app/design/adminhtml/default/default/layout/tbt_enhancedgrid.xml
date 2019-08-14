@@ -30,10 +30,10 @@
     <default>
       <reference name="head">
         <!--action method="removeItem"><type>js</type><name>mage/adminhtml/grid.js</name></action-->
-        <action method="addJs"><script>tbt/adminhtml/enhancedgrid/enhancedgrid.js</script></action> 
-        <action method="addJs"><script>tbt/adminhtml/enhancedgrid/egsupplemental.js</script></action>
-        <action method="addJs"><script>tbt/adminhtml/enhancedgrid/customfunctions/catalog_products.js</script></action>
-        <action method="addItem"><type>js_css</type><name>tbt/adminhtml/enhancedgrid/resources/css/enhancedgrid.css</name></action>
+        <action method="addJs"><script>tbt/enhancedgrid/enhancedgrid.js</script></action> 
+        <action method="addJs"><script>tbt/enhancedgrid/egsupplemental.js</script></action>
+        <action method="addJs"><script>tbt/enhancedgrid/customfunctions/catalog_products.js</script></action>
+        <action method="addItem"><type>js_css</type><name>tbt/enhancedgrid/resources/css/enhancedgrid.css</name></action>
       </reference> 
     </default>
 </layout>
