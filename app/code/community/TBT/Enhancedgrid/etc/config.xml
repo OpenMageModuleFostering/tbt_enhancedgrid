@@ -25,26 +25,31 @@
         </routers>
     </admin>
 
-  <global>
-    <blocks>
-      <enhancedgrid>
-        <class>TBT_Enhancedgrid_Block</class>
-      </enhancedgrid>
-    </blocks>
-    <helpers>
-        <enhancedgrid>
-            <class>TBT_Enhancedgrid_Helper</class>
-        </enhancedgrid>
-    </helpers>
-    <blocks>
-      <adminhtml>
-        <rewrite>
-          <widget_grid_column>TBT_Enhancedgrid_Block_Widget_Grid_Column</widget_grid_column>
-        </rewrite>
-      </adminhtml>
-    </blocks>
+    <global>
+        <blocks>
+          <enhancedgrid>
+            <class>TBT_Enhancedgrid_Block</class>
+          </enhancedgrid>
+        </blocks>
+        <helpers>
+            <enhancedgrid>
+                <class>TBT_Enhancedgrid_Helper</class>
+            </enhancedgrid>
+        </helpers>
+        <blocks>
+          <adminhtml>
+            <rewrite>
+              <widget_grid_column>TBT_Enhancedgrid_Block_Widget_Grid_Column</widget_grid_column>
+            </rewrite>
+          </adminhtml>
+        </blocks>
     
-    <!-- Relate Stuff -->
+        <!-- rewrite>
+            <tbt_enhancedgrid_catalog_product>
+                <from><![CDATA[#^/adminhtml/catalog_product/((index.*))/$#]]></from>
+                <to>/enhancedgrid/catalog_product/${1}/</to>
+            </tbt_enhancedgrid_catalog_product>
+        </rewrite -->
     </global>
   
     <adminhtml>

@@ -75,7 +75,6 @@ class TBT_Enhancedgrid_Block_Widget_Grid_Column_Renderer_Image extends Mage_Admi
         $val = $val2 = $row->getData($this->getColumn()->getIndex());
         $url = Mage::helper('enhancedgrid')->getImageUrl($val);
         
-        
         if(!Mage::helper('enhancedgrid')->getFileExists($val)) {
           $dored =true;
           $val .= "[!]";
@@ -99,7 +98,7 @@ class TBT_Enhancedgrid_Block_Widget_Grid_Column_Renderer_Image extends Mage_Admi
             $out .= "<img src=". $url ." width='". self::$width ."' ";
             $out .= "height='". self::$height ."' /> ";
         }
-        
+        //die( $this->helper('catalog/image')->init($_product, 'small_image')->resize(135, 135));
         $out .= '</a></center>';
         
         return $out;
