@@ -345,12 +345,16 @@ varienGrid.prototype.doFilter = function(){
             if(filters[i].value && filters[i].value.length) elements.push(filters[i]);
         }
         if (!this.doFilterCallback || (this.doFilterCallback && this.doFilterCallback())) {
-            this.addVarToUrl('q', $$('input#enhancedGridSearchQry')[0].value);
+            if($$('input#enhancedGridSearchQry')[0] != undefined) {
+                this.addVarToUrl('q', $$('input#enhancedGridSearchQry')[0].value);
+            }
             this.reload(this.addVarToUrl(this.filterVar, encode_base64(Form.serializeElements(elements))));
         }
     }
 varienGrid.prototype.resetFilter = function(){
-        this.addVarToUrl('q', '')
+        if($$('input#enhancedGridSearchQry')[0] != undefined) {
+            this.addVarToUrl('q', '')
+        }
         this.addVarToUrl(this.filterVar, '')
         this.reload();
     }
