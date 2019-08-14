@@ -83,12 +83,12 @@
                 <width>75</width>
                 <height>75</height>
             </images>
-            <griddefaults>
+            <defaults>
                 <limit>20</limit>
                 <page>1</page>
                 <sort>id</sort>
                 <dir>desc</dir>
-            </griddefaults>
+            </defaults>
         </enhancedgrid>
     </default>
     

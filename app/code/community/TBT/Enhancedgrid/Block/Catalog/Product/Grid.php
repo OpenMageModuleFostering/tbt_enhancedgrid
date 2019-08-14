@@ -56,10 +56,11 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
     }
     
     private function prepareDefaults() {
-        $this->setDefaultLimit(Mage::getStoreConfig('enhancedgrid/griddefaults/limit'));
-        $this->setDefaultPage(Mage::getStoreConfig('enhancedgrid/griddefaults/page'));
-        $this->setDefaultSort(Mage::getStoreConfig('enhancedgrid/griddefaults/sort'));
-        $this->setDefaultDir(Mage::getStoreConfig('enhancedgrid/griddefaults/dir'));
+    echo Mage::getStoreConfig('enhancedgrid/defaults/limit');
+        $this->setDefaultLimit(Mage::getStoreConfig('enhancedgrid/defaults/limit'));
+        $this->setDefaultPage(Mage::getStoreConfig('enhancedgrid/defaults/page'));
+        $this->setDefaultSort(Mage::getStoreConfig('enhancedgrid/defaults/sort'));
+        $this->setDefaultDir(Mage::getStoreConfig('enhancedgrid/defaults/dir'));
 
     }
     
