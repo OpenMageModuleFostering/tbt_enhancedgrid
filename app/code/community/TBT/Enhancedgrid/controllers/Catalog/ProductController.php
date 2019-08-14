@@ -80,7 +80,7 @@ class TBT_Enhancedgrid_Catalog_ProductController extends Mage_Adminhtml_Catalog_
     public function exportCsvAction()
     {
         $fileName   = 'products.csv';
-        $content    = $this->getLayout()->createBlock('massrelater/catalog_product_grid')
+        $content    = $this->getLayout()->createBlock('enhancedgrid/catalog_product_grid')
             ->getCsv();
 
         $this->_sendUploadResponse($fileName, $content);
@@ -92,7 +92,7 @@ class TBT_Enhancedgrid_Catalog_ProductController extends Mage_Adminhtml_Catalog_
     public function exportXmlAction()
     {
         $fileName   = 'products.xml';
-        $content    = $this->getLayout()->createBlock('massrelater/catalog_product_grid')
+        $content    = $this->getLayout()->createBlock('enhancedgrid/catalog_product_grid')
             ->getXml();
 
         $this->_sendUploadResponse($fileName, $content);

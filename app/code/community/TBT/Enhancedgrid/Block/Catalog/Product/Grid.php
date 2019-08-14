@@ -35,6 +35,7 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
 {
     protected $isenhanced = true;
     private $columnSettings = array();
+    private $columnOptions = array();
     private $isenabled = true;
 
     public function __construct()
@@ -161,6 +162,31 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
         
         return $this;
     }
+    
+    /**
+     * if the attribute has options an options entry will be 
+     * added to $columnOptions
+     * TODO: load first     
+     */               
+    private function loadColumnOptions($attr_code) {
+        $attr = Mage::getModel('eav/entity_attribute')->loadByCode('catalog_product', $attr_code);
+        if(sizeof($attr->getData()) > 0) {
+            if($attr->getFrontendInput() == 'select') {
+                $values = Mage::getResourceModel('eav/entity_attribute_option_collection')
+                    ->setAttributeFilter($attr->getId())
+                    ->setStoreFilter($this->_getStore(), false)
+                    ->load();
+                $options = array();
+                foreach($values as $value) {
+                    $options[$value->getOptionId()] = $value->getValue();
+                }
+                //die($attr_code);
+                $this->columnOptions[$attr_code] = $options;
+                //die(print_r($this->columnOptions, true));
+            }
+        }
+        
+    }
 
 
     protected function _getStore()
@@ -187,7 +213,12 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
 
     protected function _prepareColumns()
     {
+        // Loads all the column options for each applicable column.
+        foreach($this->columnSettings as $col => $true) {
+            $this->loadColumnOptions($col);
+        }
         
+        $store = $this->_getStore();
         if($this->colIsVisible('id')) {
             $this->addColumn('id',
                 array(
@@ -237,7 +268,6 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
             ));
         }
         if($this->colIsVisible('name')) {
-            $store = $this->_getStore();
             if ($store->getId()) {
                 $this->addColumn('custom_name',
                     array(
@@ -287,7 +317,6 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
 
 
         if($this->colIsVisible('price')) {
-            $store = $this->_getStore();
             $this->addColumn('price',
                 array(
                     'header'=> Mage::helper('catalog')->__('Price'),
@@ -362,7 +391,7 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
             'special_to_date'  => array('type'=>'date', 'width'=>'100px', 'header'=> Mage::helper('catalog')->__('Spshl TO Date')),
             'special_price'  => array('type'=>'price', 'width'=>'30px', 'header'=> Mage::helper('catalog')->__('Special Price'), 'currency_code' => $currency),
             'special_from_date'  => array('type'=>'date', 'width'=>'100px', 'header'=> Mage::helper('catalog')->__('Spshl FROM Date')),
-            'color'  => array('type'=>'text', 'width'=>'70px', 'header'=> Mage::helper('catalog')->__('Spshl TO Date')),
+            'color'  => array('type'=>'text', 'width'=>'70px', 'header'=> Mage::helper('catalog')->__('Color')),
             'size'  => array('type'=>'text', 'width'=>'70px', 'header'=> Mage::helper('catalog')->__('Size')),
             'brand'  => array('type'=>'text', 'width'=>'70px', 'header'=> Mage::helper('catalog')->__('Brand')),
             'custom_design'  => array('type'=>'text', 'width'=>'70px', 'header'=> Mage::helper('catalog')->__('Custom Design')),
@@ -390,6 +419,12 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
                 );
             }
             $innerSettings['index'] = $col;
+            //echo print_r($this->columnOptions, true);
+            if(isset($this->columnOptions[$col])) {
+                //die($col);
+                $innerSettings['type'] = 'options';
+                $innerSettings['options'] = $this->columnOptions[$col];
+            }
             $this->addColumn($col, $innerSettings);
         }
 
@@ -450,7 +485,7 @@ class TBT_Enhancedgrid_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_W
 
         $this->getMassactionBlock()->addItem('attributes', array(
             'label' => Mage::helper('catalog')->__('Update attributes'),
-            'url'   => $this->getUrl('*/catalog_product_action_attribute/edit', array('_current'=>true))
+            'url'   => $this->getUrl('adminhtml/catalog_product_action_attribute/edit', array('_current'=>true))
         ));
 
         

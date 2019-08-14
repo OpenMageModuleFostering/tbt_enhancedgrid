@@ -75,7 +75,7 @@
                 <truncatelongtextafter>60</truncatelongtextafter>
             </general>
             <columns>
-                <showcolumns>id,name,type_id,attribute_set_id,sku,price,qty,visibility,status,websites,image</showcolumns>
+                <showcolumns>id,name,type_id,attribute_set_id,sku,price,qty,visibility,status,websites,thumbnail</showcolumns>
             </columns>
             <images>
                 <showurl>0</showurl>

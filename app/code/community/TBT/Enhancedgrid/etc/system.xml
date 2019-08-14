@@ -10,6 +10,7 @@
    <sections>
         <enhancedgrid translate="label" module="enhancedgrid">
             <label>Enhanced Product Grid</label>
+            <comment>This extension was developed by Trade Business Technology Corp.  For customization </comment>
             <tab>tbtall</tab>
             <frontend_type>text</frontend_type>
             <sort_order>10</sort_order>
@@ -19,7 +20,8 @@
             <groups>
                 <columns translate="label">
                     <label>General Options</label>
-                    <sort_order>100</sort_order>
+                    <comment>------ Need More Custom E-Commerce Solutions Like This? We can help!  Contact Jay at "jaye@tbtcorp.com" for more info. ------</comment>
+                    <sort_order>200</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <fields>
@@ -58,7 +60,7 @@
                 </columns>
                 <images translate="label">
                     <label>In-Grid Image Options</label>
-                    <sort_order>200</sort_order>
+                    <sort_order>300</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <fields>
@@ -98,7 +100,7 @@
                 </images>
                 <defaults translate="label">
                     <label>Default Grid State</label>
-                    <sort_order>300</sort_order>
+                    <sort_order>400</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <fields>
