@@ -78,7 +78,7 @@
                 <showcolumns>id,name,type_id,attribute_set_id,sku,price,qty,visibility,status,websites,image</showcolumns>
             </columns>
             <images>
-                <showimagesurl>0</showimagesurl>
+                <showurl>0</showurl>
                 <showbydefault>1</showbydefault>
                 <width>75</width>
                 <height>75</height>
