@@ -1,3 +1,5 @@
+
+
 ## Original Package Description
 
 Enhanced admin product grid with images, custom attributes and more.
