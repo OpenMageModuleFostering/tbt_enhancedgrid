@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/TBT_Enhancedgrid",
+    "name": "OpenMageModuleFostering\/TBT_Enhancedgrid",
     "type": "magento-module",
     "license": "",
     "homepage": "",
     "description": "Enhanced admin product grid with images, custom attributes and more.",
     "authors": [
-    {
-        "name": "Jay El-Kaake",
-        "email": "jay@sweettoothhq.com"
-    }
-],
+        {
+            "name": "Jay El-Kaake",
+            "email": "jay@sweettoothhq.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
